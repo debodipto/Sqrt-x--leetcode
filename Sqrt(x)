@@ -1,0 +1,16 @@
+class Solution {
+public:
+    long long mySqrtRange(long long x, long long low, long long high){
+        long long mid = (low + high)/2;
+        if((mid * mid <= x) && (mid+1) * (mid+1) > x){
+            return mid;
+        }else if(mid * mid < x){
+            return mySqrtRange(x, low+1, high);
+        }
+        return mySqrtRange(x, low, high-1);
+    }
+    
+    int mySqrt(int x) {
+        return (int)mySqrtRange((long long)x, (long long)0, (long long)(x/2));
+    }
+};
